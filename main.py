@@ -1,22 +1,5 @@
-import time
-import sys
 from game_logic.game import new_game
-
-def loading_animation(duration_seconds=5):
-    end_time = time.time() + duration_seconds
-    
-    print("Loading", end="", flush=True)
-    
-    while time.time() < end_time:
-        for dots in [".  ", ".. ", "...", "   "]:
-            # \r moves the cursor back to the start of the line
-            sys.stdout.write(f"\rGame loading{dots}")
-            sys.stdout.flush()
-            time.sleep(0.4)
-            
-    print("\r    ")
-
-loading_animation()
+from game_logic.game import loading_animation
 
 def welcome_display(name):
 
@@ -29,26 +12,36 @@ def welcome_display(name):
     3. INSTRUCTIONS/ABOUT
     4. QUIT
 """)
-    return input("Select option(1, 2 or 3)")
+    return input("Select option(1, 2, 3 or 4): ")
     
 
 
 def main():
-    name = input("Choose your gaming nickname: ").strip().lower().capitalize()
-    choice = welcome_display(name)
-    available_choices = ["1", "2", "3", "4"]
 
     while True:
+        choice = welcome_display(name)
+        name = input("Choose your gaming nickname: ").strip().lower().capitalize()
+        available_choices = ["1", "2", "3", "4"]
+        
+        loading_animation()
+        
         if choice not in available_choices:
+            loading_animation()
             print("Invalid choice: choose between 1, 2, 3 and 4")
         elif choice == "4":
+            loading_animation()
             print("Farewell from mistery-island")
             break
         elif choice == "1":
-            new_game()
+            print(new_game(name))
+            
+
+        else:
+            loading_animation()
+            print("invalid choice")
    
    
    
-    return    
+      
 if __name__=="__main__":
     main()
