@@ -107,7 +107,7 @@ player["energy"] -= 2
 print(player["energy"])
 print(player.get("stats", 0))
 print(player["stats"])
-"""
+
 selection_list = ["1", "2", "3", "q"]
 
 
@@ -122,7 +122,7 @@ while True:
         print(f"Welcome to no {choice}")       
     else:
         print("Invalid option; select 1,2,3 or q")
-"""
+
 
 while True:
     try:   
