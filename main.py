@@ -19,8 +19,9 @@ def welcome_display(name):
 def main():
 
     while True:
-        choice = welcome_display(name)
         name = input("Choose your gaming nickname: ").strip().lower().capitalize()
+        choice = welcome_display(name)
+        
         available_choices = ["1", "2", "3", "4"]
         
         loading_animation()
